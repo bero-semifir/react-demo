@@ -2,13 +2,14 @@ import { useState } from 'react';
 import './App.css';
 import Button from './components/Button/Button';
 import Personnage from './components/Personnage/Personnage';
+import GroupeDonjon from './components/GroupeDonjon/GroupeDonjon';
 
 const App = () => {
 
   // state ou état, une variable qui contient n'importe quelle info utilisable
   // useState -> hook d'état ⚠ uniquement utilisable sur les composants fonctions
   // génére un getter et un setter d'un état de composant
-  const [joueur, setJoueur] = useState({ nom: "Roland", pv: 40, pvMax: 40 })
+  const [joueur, setJoueur] = useState({ nom: "Roland", pv: 40, pvMax: 40 });
 
   // let joueurs = [
   //   { nom: "Roland", pv: 10, pvMax: 300 },
@@ -24,10 +25,10 @@ const App = () => {
       degats = 20;
     }
     // calcul de la nouvelle valeur des PV du joueur
-    let newPv = joueur.pv - degats
+    let newPv = joueur.pv - degats;
 
     if(newPv < 0){
-      newPv = 0
+      newPv = 0;
     }
 
     // modification du joueur avec ses PV
@@ -83,8 +84,17 @@ const App = () => {
             }} action2_text="soigner" action2={() => soigner(joueur)} />
           })
         } */}
-        <Personnage nom={joueur.nom} pv={joueur.pv} pvMax={joueur.pvMax} action1={taper} action1_text="taper" action2={soigner} action2_text="soigner" />
-        <Button onClickAction={debug} buttonText="debug"/>
+        
+        <GroupeDonjon>
+          {/* à l'intérieur des balises de GroupeDonjon se trouve les enfants (children) du composant */}
+          <Personnage nom={joueur.nom} pv={joueur.pv} pvMax={joueur.pvMax} action1={taper} action1_text="taper" action2={soigner} action2_text="soigner" />
+          <Personnage nom={joueur.nom} pv={joueur.pv} pvMax={joueur.pvMax} action1={taper} action1_text="taper" action2={soigner} action2_text="soigner" />
+          <Personnage nom={joueur.nom} pv={joueur.pv} pvMax={joueur.pvMax} action1={taper} action1_text="taper" action2={soigner} action2_text="soigner" />
+        </GroupeDonjon>
+        <Button onClickAction={debug}>
+            debug
+        </Button>
+
       </div>
     </div>
   );

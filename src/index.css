@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.groupe_donjon {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1em;
+  padding: 2em;
+}
+
+.groupe_donjon * {
+  margin: 0.5em;
+}
